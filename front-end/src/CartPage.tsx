@@ -23,25 +23,9 @@ export default function CartPage() {
           <div>
             <div>
               <img src={image}></img>
-              <h1>Your cart is empty</h1>
+              <h1>Your cart is empty...</h1>
               Check out our <Link to={Routes.Product}>product page</Link> to see
               all the wonderful planets we have on offer!
-            </div>
-
-            <div className="action-footer">
-              <Button
-                variant="contained"
-                onClick={() => handleClick(Routes.Product)}
-              >
-                Shop as Guest
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => handleClick(Routes.SignIn)}
-              >
-                Sign In
-              </Button>
             </div>
           </div>
         </div>

@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.cart-page .empty-cart-section h1 {
+  font-family: "Space Mono", monospace;
+}
+
 .cart-page .empty-cart-section > div {
   width: 100%;
 }
@@ -22,12 +26,4 @@
   border-radius: 25px;
   margin-bottom: 10px;
   max-width: 100%;
-}
-
-.cart-page .empty-cart-section .action-footer {
-  margin-top: 20px;
-}
-
-.cart-page .empty-cart-section .action-footer button:first-child {
-  margin-right: 20px;
 }
