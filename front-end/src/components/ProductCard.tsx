@@ -13,7 +13,8 @@ import { useTheme } from "@material-ui/core/styles";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 // Local imports
-import { Product } from "./product";
+import { Product } from "domain/product";
+
 import "./ProductCard.css";
 
 // Height (in pixels) the image at the top of this component will default to if the height property is not provided.

@@ -12,9 +12,10 @@ import Person from "@material-ui/icons/Person";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 // Local imports
-import logo from "./images/logo.png";
+import { Routes } from "domain/routes";
+import logo from "assets/logo.png";
+
 import "./PlanetStoreAppBar.css";
-import { Routes } from "./routes";
 
 function PlanetStoreAppBar() {
   const history = useHistory();

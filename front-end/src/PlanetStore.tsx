@@ -1,5 +1,5 @@
+// React imports
 import React from "react";
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,18 +7,20 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
+// Material UI imports
 import { deepPurple } from "@material-ui/core/colors";
 import { orange } from "@material-ui/core/colors";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
-import PlanetStoreAppBar from "./PlanetStoreAppBar";
-import CartPage from "./CartPage";
-import SignInPage from "./SignInPage";
+// Local imports
+import PlanetStoreAppBar from "components/PlanetStoreAppBar";
+import { Routes } from "domain/routes";
+import CartPage from "pages/CartPage";
+import ProductPage from "pages/ProductPage";
+import SignInPage from "pages/SignInPage";
 
-import { Routes } from "./routes";
 import "./PlanetStore.css";
-import ProductPage from "./ProductPage";
 
 const DEFAULT_PAGE = Routes.Cart;
 

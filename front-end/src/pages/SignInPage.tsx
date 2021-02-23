@@ -2,13 +2,14 @@
 import React from "react";
 
 // Material UI imports
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 // Local imports
-import HidableTextField from "./HidableTextField";
+import HidableTextField from "components/HidableTextField";
+import image from "assets/planet.jpg";
+
 import "./SignInPage.css";
-import image from "./images/planet.jpg";
 
 export default function SignInPage() {
   return (

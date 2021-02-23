@@ -2,17 +2,17 @@
 import React, { useState } from "react";
 
 // Local imports
-import ProductCard from "./ProductCard";
-import { Product } from "./product";
+import ProductCard from "components/ProductCard";
+import { Product } from "domain/product";
 
 // TODO: REMOVE THIS
-import blackHoldImg from "./images/black_hole.png";
-import gardenPlanetImg from "./images/garden_planet.jpg";
-import gasGiantImg from "./images/gas_giant.png";
-import corePlanetImg from "./images/core_planet.jpg";
-import gasGiantMoonImg from "./images/gas_giant_moon.png";
-import gardenMoonImg from "./images/garden_moon.jpg";
-import nukedGardenImg from "./images/nuked_garden.png";
+import blackHoldImg from "assets/black_hole.png";
+import gardenPlanetImg from "assets/garden_planet.jpg";
+import gasGiantImg from "assets/gas_giant.png";
+import corePlanetImg from "assets/core_planet.jpg";
+import gasGiantMoonImg from "assets/gas_giant_moon.png";
+import gardenMoonImg from "assets/garden_moon.jpg";
+import nukedGardenImg from "assets/nuked_garden.png";
 
 // TODO: Remove
 const mockProducts: Product[] = [

@@ -10,20 +10,20 @@ import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
 
 // Local imports
-import { Routes } from "./routes";
-import image from "./images/planet_family.png";
-import { Product } from "./product";
+import { Product } from "domain/product";
+import { Routes } from "domain/routes";
+import image from "assets/planet_family.png";
 
 import "./CartPage.css";
 
 //TODO: Remove this!
-import blackHoldImg from "./images/black_hole.png";
-import gardenPlanetImg from "./images/garden_planet.jpg";
-import gasGiantImg from "./images/gas_giant.png";
-import corePlanetImg from "./images/core_planet.jpg";
-import gasGiantMoonImg from "./images/gas_giant_moon.png";
-import gardenMoonImg from "./images/garden_moon.jpg";
-import nukedGardenImg from "./images/nuked_garden.png";
+import blackHoldImg from "assets/black_hole.png";
+import gardenPlanetImg from "assets/garden_planet.jpg";
+import gasGiantImg from "assets/gas_giant.png";
+import corePlanetImg from "assets/core_planet.jpg";
+import gasGiantMoonImg from "assets/gas_giant_moon.png";
+import gardenMoonImg from "assets/garden_moon.jpg";
+import nukedGardenImg from "assets/nuked_garden.png";
 
 //TODO: Remove this!
 const mockCartItems: Product[] = [
