@@ -14,6 +14,7 @@ import gasGiantMoonImg from "./images/gas_giant_moon.png";
 import gardenMoonImg from "./images/garden_moon.jpg";
 import nukedGardenImg from "./images/nuked_garden.png";
 
+// TODO: Remove
 const mockProducts: Product[] = [
   {
     name: "XK-991",
