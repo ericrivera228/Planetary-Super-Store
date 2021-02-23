@@ -1,0 +1,33 @@
+.cart-page h1 {
+  margin-bottom: 30px;
+}
+
+.cart-page .empty-cart-section {
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-page .empty-cart-section > div {
+  width: 100%;
+}
+
+.cart-page .empty-cart-section > div > div {
+  max-width: 700px;
+  margin: auto;
+}
+
+.cart-page .empty-cart-section img {
+  border-radius: 25px;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.cart-page .empty-cart-section .action-footer {
+  margin-top: 20px;
+}
+
+.cart-page .empty-cart-section .action-footer button:first-child {
+  margin-right: 20px;
+}

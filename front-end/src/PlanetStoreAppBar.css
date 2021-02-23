@@ -1,0 +1,24 @@
+.ps-app-bar .toolbar {
+  justify-content: space-between;
+}
+
+.ps-app-bar .toolbar .store-title {
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: "Space Mono", monospace;
+}
+
+.ps-app-bar .toolbar > div,
+.ps-app-bar .toolbar > div > a {
+  display: flex;
+  align-items: center;
+}
+
+.ps-app-bar .toolbar > div > a {
+  color: white;
+  text-decoration: none;
+}
+
+.ps-app-bar .button-section button {
+  color: white;
+}

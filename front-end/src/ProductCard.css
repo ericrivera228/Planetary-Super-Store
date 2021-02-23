@@ -1,0 +1,24 @@
+.product-card {
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card .header {
+  margin-bottom: 20px;
+  font-family: "Space Mono", monospace !important;
+}
+
+.product-card .header .title {
+  font-size: 1.6em;
+}
+
+.product-card .header .price {
+  font-size: 1.2em;
+}
+
+.product-card .card-actions {
+  justify-content: right;
+}
