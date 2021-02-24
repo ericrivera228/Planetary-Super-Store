@@ -29,6 +29,9 @@ namespace PlanetarySuperStoreApi.Controllers
         {
             var totalCost = 0m;
             var cartItems = await _context.CartItems.ToListAsync();
+
+            // Pull out the product list asynchronously so it can be used later - there is definitely a better
+            // way to do this, but it does at least fix the async bug.
             var products = await _context.Products.ToListAsync();
             
             // Calculate the price of each item in the cart (number of units selected * price)
