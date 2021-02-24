@@ -34,6 +34,9 @@ interface iProductCardProps {
   imageHeight?: number;
 }
 
+/**
+ * Component that displays the given product in a card.
+ */
 function ProductCard(props: iProductCardProps) {
   const theme = useTheme();
 
@@ -44,19 +47,14 @@ function ProductCard(props: iProductCardProps) {
           <CardMedia
             component="img"
             image={props.product.imageSrc}
-            height={
-              props.imageHeight ? props.imageHeight : DEFAULT_IMAGE_HEIGHT
-            }
+            height={props.imageHeight ? props.imageHeight : DEFAULT_IMAGE_HEIGHT}
             title={props.product.name}
           />
         )}
 
         <CardContent>
           <div className="header">
-            <div
-              className="title"
-              style={{ color: theme.palette.primary.main }}
-            >
+            <div className="title" style={{ color: theme.palette.primary.main }}>
               {props.product.name}
             </div>
             <div className="price">${props.product.price}</div>

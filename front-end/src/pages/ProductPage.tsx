@@ -1,13 +1,10 @@
 // React imports
 import React, { useState } from "react";
 
-// Material UI imports
-import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
-import Snackbar from "@material-ui/core/Snackbar";
-
 // Local imports
 import { AppApi } from "appApi";
 import { iPageProps } from "domain/iPageProps";
+import ErrorSnackBar from "components/ErrorSnackBar";
 import ProductCard from "components/ProductCard";
 
 const ADD_PRODUCT_ERROR =
@@ -24,7 +21,6 @@ export default function ProductPage(props: iPageProps) {
       },
       (error) => {
         setError(ADD_PRODUCT_ERROR);
-        console.log(error);
       }
     );
   };
@@ -52,20 +48,7 @@ export default function ProductPage(props: iPageProps) {
           );
         })}
       </div>
-      <Snackbar
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        color="red"
-        open={error !== ""}
-        autoHideDuration={6000}
-        onClose={() => setError("")}
-      >
-        <MuiAlert elevation={6} variant="filled" severity="error">
-          {error}
-        </MuiAlert>
-      </Snackbar>
+      <ErrorSnackBar error={error} onClose={() => setError("")} />
     </div>
   );
 }
