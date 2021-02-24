@@ -23,10 +23,7 @@ export class AppApi {
     }).then((res) => handleResponse(res));
   }
 
-  static changeItemQuantity(
-    cartItemId: string,
-    quantity: number | string
-  ): Promise<any> {
+  static changeItemQuantity(cartItemId: string, quantity: number | string): Promise<any> {
     // -1 is a magic param that indicates a null. Use this if the input is an empty string
     const qualParam = quantity == "" ? -1 : quantity;
 

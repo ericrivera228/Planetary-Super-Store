@@ -20,12 +20,7 @@ export default function SignInPage() {
         <h1>Planetary Super Store!</h1>
 
         <div>
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            className="form-field"
-          />
+          <TextField id="outlined-basic" label="Email" variant="outlined" className="form-field" />
           <HidableTextField label="Password" />
         </div>
 

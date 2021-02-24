@@ -96,42 +96,50 @@ export default function CartPage(props: iPageProps) {
             {props.cart!.items.map((cartItem) => {
               const product = props.products.find((x) => x.id === cartItem.productId)!;
 
-              return (
-                <div className="row cart-row" key={product.name}>
-                  <div className="col col-2">
-                    <img
-                      src={product.imageSrc}
-                      style={{
-                        width: "100%",
-                        borderRadius: "25px",
-                        height: 70,
-                      }}
-                    />
+              if (product != null) {
+                return (
+                  <div>
+                    {product != null && (
+                      <div className="row cart-row" key={product.name}>
+                        <div className="col col-2">
+                          <img
+                            src={product.imageSrc}
+                            style={{
+                              width: "100%",
+                              borderRadius: "25px",
+                              height: 70,
+                            }}
+                          />
+                        </div>
+                        <div className="col col-3">
+                          <h5>{product?.name}</h5>
+                        </div>
+                        <div className="col col-2 quantity">
+                          <TextField
+                            id="outlined-number"
+                            type="number"
+                            InputLabelProps={{
+                              shrink: true,
+                            }}
+                            variant="outlined"
+                            onChange={(event: any) => handleQuantityChange(cartItem.id, event.target.value)}
+                            value={cartItem.quantity == null ? "" : cartItem.quantity}
+                          />
+                        </div>
+                        <div className="col col-2 unit-price">
+                          {cartItem.quantity !== 1 && `$${product?.price} each`}
+                        </div>
+                        <div className="col col-2 amount">${(cartItem.quantity * product.price).toFixed(2)}</div>
+                        <div className="col col-1">
+                          <IconButton onClick={() => handleDeleteClick(cartItem.id)} style={{ color: "#B00020" }}>
+                            <Delete />
+                          </IconButton>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="col col-3">
-                    <h5>{product?.name}</h5>
-                  </div>
-                  <div className="col col-2 quantity">
-                    <TextField
-                      id="outlined-number"
-                      type="number"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      variant="outlined"
-                      onChange={(event: any) => handleQuantityChange(cartItem.id, event.target.value)}
-                      value={cartItem.quantity == null ? "" : cartItem.quantity}
-                    />
-                  </div>
-                  <div className="col col-2 unit-price">{cartItem.quantity !== 1 && `$${product?.price} each`}</div>
-                  <div className="col col-2 amount">${(cartItem.quantity * product.price).toFixed(2)}</div>
-                  <div className="col col-1">
-                    <IconButton onClick={() => handleDeleteClick(cartItem.id)} style={{ color: "#B00020" }}>
-                      <Delete />
-                    </IconButton>
-                  </div>
-                </div>
-              );
+                );
+              }
             })}
             <Divider style={{ marginBottom: 10 }} />
             <div className="row total-row">

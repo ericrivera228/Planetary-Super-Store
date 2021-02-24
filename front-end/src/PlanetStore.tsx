@@ -1,11 +1,6 @@
 // React imports
 import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 // Material UI imports
 import { deepPurple } from "@material-ui/core/colors";
@@ -111,21 +106,13 @@ function PlanetStore() {
                   <Redirect to={DEFAULT_PAGE} />
                 </Route>
                 <Route path={Routes.Cart}>
-                  <CartPage
-                    products={products}
-                    cart={cart}
-                    handleCartChange={onCartChange}
-                  />
+                  <CartPage products={products} cart={cart} handleCartChange={onCartChange} />
                 </Route>
                 <Route path={Routes.SignIn}>
                   <SignInPage />
                 </Route>
                 <Route path={Routes.Product}>
-                  <ProductPage
-                    products={products}
-                    cart={cart}
-                    handleCartChange={onCartChange}
-                  />
+                  <ProductPage products={products} cart={cart} handleCartChange={onCartChange} />
                 </Route>
               </Switch>
             )}

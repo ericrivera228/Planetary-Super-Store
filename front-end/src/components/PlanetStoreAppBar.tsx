@@ -16,11 +16,19 @@ import { Routes } from "domain/routes";
 
 import "./PlanetStoreAppBar.css";
 
+/**
+ * Component for the bar that sits at the top of the app.
+ */
 function PlanetStoreAppBar() {
   const history = useHistory();
 
-  const handleClick = (newPath: Routes) => {
-    history.push(newPath);
+  /**
+   * Function for handling when one of navigation links are clicked. Redirects to the provided route.
+   *
+   * @param route Route to redirect to.
+   */
+  const handleClick = (route: Routes) => {
+    history.push(route);
   };
 
   return (
@@ -30,10 +38,7 @@ function PlanetStoreAppBar() {
           <div>
             <Link to={Routes.Product}>
               <IconButton edge="start" disableRipple={true}>
-                <img
-                  src="assets/logo.png"
-                  style={{ height: 40, width: 40 }}
-                ></img>
+                <img src="assets/logo.png" style={{ height: 40, width: 40 }}></img>
               </IconButton>
               <span className="store-title">Planetary Super Store</span>
             </Link>

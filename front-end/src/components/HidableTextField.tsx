@@ -31,9 +31,7 @@ export default function HidableTextField(props: iHidableTextFieldProps) {
 
   return (
     <FormControl variant="outlined" className="form-field">
-      <InputLabel htmlFor="outlined-adornment-password">
-        {props.label}
-      </InputLabel>
+      <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
       <OutlinedInput
         type={showValue ? "text" : "password"}
         endAdornment={

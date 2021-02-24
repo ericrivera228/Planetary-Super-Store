@@ -14,14 +14,16 @@ export default function ProductPage(props: iPageProps) {
   // Indicates if there was an error adding a product to the cart
   const [error, setError] = useState("");
 
+  /**
+   * Handler for when the user clicks an add button. Calls the API to add a new item to the cart. If there is an error
+   * communicating with the API, and error message is shown.
+   *
+   * @param productId Id of the new product to add to the cart.
+   */
   const onAddClick = (productId: string) => {
     AppApi.addCartItem(productId).then(
-      () => {
-        props.handleCartChange();
-      },
-      (error) => {
-        setError(ADD_PRODUCT_ERROR);
-      }
+      () => props.handleCartChange(),
+      () => setError(ADD_PRODUCT_ERROR)
     );
   };
 
@@ -30,18 +32,10 @@ export default function ProductPage(props: iPageProps) {
       <div className="row">
         {props.products.map((productToDisplay) => {
           return (
-            <div
-              className="col-4"
-              key={productToDisplay.name}
-              style={{ marginBottom: 30 }}
-            >
+            <div className="col-4" key={productToDisplay.name} style={{ marginBottom: 30 }}>
               <ProductCard
                 product={productToDisplay}
-                inCart={
-                  props.cart?.items.find(
-                    (x) => x.productId === productToDisplay.id
-                  ) != null
-                }
+                inCart={props.cart?.items.find((x) => x.productId === productToDisplay.id) != null}
                 handleAddClick={onAddClick}
               />
             </div>
