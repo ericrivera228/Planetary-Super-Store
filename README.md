@@ -11,7 +11,7 @@ This app is harcoded to use ports 5000 and 3000. If either is unavailable, the a
 #### Running the back-end
 `docker run -it -p 5000:5000 ericrivera228/planet-store-backend:latest`
 
-VERY IMPORTANT! DO NOT CHANGE THE PORT OPTION! The front-end of the app is hard-coded to expect the back-end on port 5000. Exposing the web server on a different will break the application.
+VERY IMPORTANT! DO NOT CHANGE THE PORT OPTION! The front-end of the app is hard-coded to expect the back-end on port 5000. Exposing the web server on a port different will break the application.
 
 #### Running the front-end
 `docker run -it -p 3000:3000 ericrivera228/planet-store-frontend:latest`
