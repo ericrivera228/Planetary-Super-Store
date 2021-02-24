@@ -27,10 +27,10 @@ I've published a public docker container that can be used to run this side of th
 
 ### Locally
 
-If you wish, you can also download, build, and run the code locally. After downloading this repo folder:
+If you wish, you can also download, build, and run the code locally. After downloading this repo folder, run the following commands:
 
-`npm install`
+1. `npm install` -
 Installs the library dependencies. 
 
-`npm start`
+2. `npm start` -
 Runs the app in the development mode.
