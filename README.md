@@ -19,8 +19,11 @@ And that's it! You should now be able to go to `localhost:3000` and buy yourself
 ## Bug Disclaimer
 
 There is a bug on the back-end that occasionally occurs. In the terminal running the back-end container, you'll see:
-`fail: Microsoft.AspNetCore.Server.Kestrel[13]
-      Connection id "0HM6P06FJH1PF", Request id "0HM6P06FJH1PF:00000002": An unhandled exception was thrown by the application.`
+```
+fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      Connection id "0HM6P06FJH1PF", Request id "0HM6P06FJH1PF:00000002": An unhandled exception was thrown by the application.
+      ...
+```
       
 This will cash the app to crash, and you'll be shown an error message on the app page. 
       
