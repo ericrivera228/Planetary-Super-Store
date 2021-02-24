@@ -24,6 +24,9 @@ interface iProductCardProps {
   // Product to be displayed in this card
   product: Product;
 
+  // Callback for when the 'add' button is clicked
+  handleAddClick: (productId: string) => void;
+
   // Height (in pixels) for the image at the top of the card
   imageHeight?: number;
 }
@@ -65,6 +68,7 @@ function ProductCard(props: iProductCardProps) {
           variant="contained"
           color="secondary"
           disableElevation={true}
+          onClick={() => props.handleAddClick(props.product.id)}
           startIcon={<AddShoppingCartIcon />}
         >
           Add to Cart

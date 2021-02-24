@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 
 // Local imports
 import HidableTextField from "components/HidableTextField";
-import image from "assets/planet.jpg";
 
 import "./SignInPage.css";
 
@@ -15,7 +14,7 @@ export default function SignInPage() {
   return (
     <div className="sign-in-page">
       <div>
-        <img src={image}></img>
+        <img src="assets/planet.jpg"></img>
 
         <h3>Welcome to the...</h3>
         <h1>Planetary Super Store!</h1>

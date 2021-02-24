@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Material UI imports
@@ -10,72 +10,74 @@ import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
 
 // Local imports
+import { AppApi } from "appApi";
+import { Cart } from "domain/cart";
+import { CartItem } from "domain/cartItem";
 import { Product } from "domain/product";
 import { Routes } from "domain/routes";
-import image from "assets/planet_family.png";
 
 import "./CartPage.css";
 
-//TODO: Remove this!
-import blackHoldImg from "assets/black_hole.png";
-import gardenPlanetImg from "assets/garden_planet.jpg";
-import gasGiantImg from "assets/gas_giant.png";
-import corePlanetImg from "assets/core_planet.jpg";
-import gasGiantMoonImg from "assets/gas_giant_moon.png";
-import gardenMoonImg from "assets/garden_moon.jpg";
-import nukedGardenImg from "assets/nuked_garden.png";
+const CART_SUMMARY_ERROR =
+  "Oh no! There was an error grabbing the available products. Check the console for details.";
+const CART_ITEM_DELETE_ERROR =
+  "Oh no! There was an error removing that item from the cart. Check the console for details.";
 
-//TODO: Remove this!
-const mockCartItems: Product[] = [
-  {
-    name: "XK-991",
-    price: 28.18,
-    imageSrc: blackHoldImg,
-    description:
-      "Technically a black hole and not a planet. But while this beauty lacks a firm surface to stand on, it more than make up for with sheer gravitational power. We gurantee nothing in the enitre universe is escaping the attractive pull of XR-991!",
-  },
-  {
-    name: "CH-228",
-    price: 96.87,
-    imageSrc: gardenPlanetImg,
-    description:
-      "Garden planets are this galactic epoch's hot ticket item. Fluffy clouds, lush forests, and never ending oceans means this planet can support all kinds of carbon based lifeforms! Buy now before it's too late!",
-  },
-];
+interface iCartPageProps {
+  products: Product[];
+}
 
-export default function CartPage() {
-  const [cartItems, setCartItems] = useState(mockCartItems);
+export default function CartPage(props: iCartPageProps) {
+  const [cart, setCart] = useState<Cart | null>(null);
+  const [error, setError] = useState("");
 
-  const totalCost = cartItems
-    .reduce((sum, current) => sum + current.price, 0)
-    .toFixed(2);
+  useEffect(() => {
+    AppApi.getCartSummary().then(
+      (result) => {
+        setCart(result);
+      },
+      (error) => {
+        setError(CART_SUMMARY_ERROR);
+        console.log(error);
+      }
+    );
+  }, []);
 
   const pluralize = (word: string, count: number) => {
     return count > 1 ? word + "s" : word;
   };
 
-  const handleDeleteClick = (name: string) => {
-    setCartItems(cartItems.filter((x) => x.name !== name));
+  const handleDeleteClick = (cartItemId: string) => {
+    AppApi.deleteCartItem(cartItemId).then(
+      (result) => {
+        setCart(result);
+      },
+      (error) => {
+        setError(CART_ITEM_DELETE_ERROR);
+        console.log(error);
+      }
+    );
   };
 
   return (
     <div className="cart-page">
-      {cartItems.length <= 0 && (
-        <div className="empty-cart-section">
-          <div>
+      {cart == null ||
+        (cart.items.length <= 0 && (
+          <div className="empty-cart-section">
             <div>
-              <img src={image}></img>
-              <h1>Your cart is empty...</h1>
-              Check out our <Link to={Routes.Product}>product page</Link> to see
-              all the wonderful planets we have on offer!
+              <div>
+                <img src="assets/planet_family.png"></img>
+                <h1>Your cart is empty...</h1>
+                Check out our <Link to={Routes.Product}>product page</Link> to
+                see all the wonderful planets we have on offer!
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {cartItems.length > 0 && (
+        ))}
+      {cart != null && cart!.items.length > 0 && (
         <div className="container cart-summary MuiPaper-elevation1">
           <h3>
-            {cartItems.length} {pluralize("item", cartItems.length)} in your
+            {cart!.items.length} {pluralize("item", cart!.items.length)} in your
             cart
           </h3>
           <div className="card-table">
@@ -87,28 +89,30 @@ export default function CartPage() {
               <div className="col col-2 amount">Amount</div>
             </div>
             <Divider style={{ marginBottom: 10 }} />
-            {cartItems.map((productToDisplay) => {
+            {cart!.items.map((cartItem) => {
+              const product = props.products.find(
+                (x) => x.id === cartItem.productId
+              )!;
+
               return (
-                <div className="row cart-row" key={productToDisplay.name}>
+                <div className="row cart-row" key={product.name}>
                   <div className="col col-2">
                     <img
-                      src={productToDisplay.imageSrc}
+                      src={product.imageSrc}
                       style={{ width: "100%", borderRadius: "25px" }}
                     />
                   </div>
                   <div className="col col-3">
-                    <h5>{productToDisplay.name}</h5>
+                    <h5>{product.name}</h5>
                   </div>
                   <div className="col col-2 quantity">1</div>
                   <div className="col col-2 unit-price">
-                    ${productToDisplay.price} each
+                    ${product.price} each
                   </div>
-                  <div className="col col-2 amount">
-                    ${productToDisplay.price}
-                  </div>
+                  <div className="col col-2 amount">${product.price}</div>
                   <div className="col col-1">
                     <IconButton
-                      onClick={() => handleDeleteClick(productToDisplay.name)}
+                      onClick={() => handleDeleteClick(product.name)}
                       style={{ color: "#B00020" }}
                     >
                       <Delete />
@@ -122,7 +126,9 @@ export default function CartPage() {
               <div className="col col-9" style={{ textAlign: "right" }}>
                 Total
               </div>
-              <div className="col col-2 amount">${totalCost}</div>
+              <div className="col col-2 amount">
+                ${cart?.totalCost.toFixed(2)}
+              </div>
             </div>
           </div>
         </div>

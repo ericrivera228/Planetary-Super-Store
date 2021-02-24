@@ -2,6 +2,9 @@
  * Interface for defining the products (i.e., planets) being sold in the store.
  */
 export interface Product {
+  // ex., 12
+  id: string;
+
   // ex., XR-91
   name: string;
 

@@ -13,7 +13,6 @@ import ShoppingCart from "@material-ui/icons/ShoppingCart";
 
 // Local imports
 import { Routes } from "domain/routes";
-import logo from "assets/logo.png";
 
 import "./PlanetStoreAppBar.css";
 
@@ -31,7 +30,10 @@ function PlanetStoreAppBar() {
           <div>
             <Link to={Routes.Product}>
               <IconButton edge="start" disableRipple={true}>
-                <img src={logo} style={{ height: 40, width: 40 }}></img>
+                <img
+                  src="assets/logo.png"
+                  style={{ height: 40, width: 40 }}
+                ></img>
               </IconButton>
               <span className="store-title">Planetary Super Store</span>
             </Link>
