@@ -1,7 +1,7 @@
 namespace PlanetarySuperStoreApi.Models
 {
     /// <summary>
-    /// Represents a relationship between a product in the cart, indicating a product is included in the cart.
+    /// Represents a relationship of a product being included in the cart,
     /// </summary>
     public class CartItem
     {
