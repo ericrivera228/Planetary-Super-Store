@@ -40,4 +40,4 @@ This app was developed and tested on Firefox and Chrome. Use another browser at 
 
 Big shout-out to [Kurzgesagt](https://kurzgesagt.org/) for unknowingly providing all the art for this app. 
 
-(If anyone Kurzgesagt happens to see this, this app is purely for personal, nonmonetary use. Please don't sue me, that would be a real bummer.)
+(If anyone Kurzgesagt happens to see this, this app is soley for personal, non-monetary use. Please don't sue me, that would be a real bummer.)
