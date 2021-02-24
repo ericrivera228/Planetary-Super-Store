@@ -2,8 +2,8 @@
 import { Cart } from "domain/cart";
 import { Product } from "domain/product";
 
-const productUri = "https://localhost:5001/api/Product";
-const cartUri = "https://localhost:5001/api/cart";
+const productUri = "http://localhost:5000/api/Product";
+const cartUri = "http://localhost:5000/api/cart";
 
 /**
  * Class for interacting with the back-end api endpoints.
