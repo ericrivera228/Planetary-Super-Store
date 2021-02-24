@@ -1,6 +1,8 @@
 # Planetary-Super-Store
 All the code needed to run an online store selling the best planets in the local galactic cluster!
 
+This store runs with a React front-end, and an ASP.NET core API server. 
+
 ## Running the App
 Both sides of this application have been published to public Docker containers. You can run this app by downloading and running both docker containers.
 
