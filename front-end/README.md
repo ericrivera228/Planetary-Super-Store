@@ -17,6 +17,8 @@ Libraries used:
 2. [MaterialUI](https://material-ui.com/) - gives access to fleshed out UI components, without having to create them from scratch. 
 3. [Bootstrap](https://getbootstrap.com/) - used to easily ensure the app is responsive, and will work at mobile sizes.
 
+The general design philosophy for this side of the app is that it is only responsible for displaying data - not managing the cart. That is done by the back-end api. So anytime the user makes an edit to the cart (by adding, removing, or updating quantity), the UI uses the API to register the change.
+
 ## Running the project
 
 ### Via Docker
