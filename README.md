@@ -22,6 +22,7 @@ There is a bug on the back-end that occasionally occurs. In the terminal running
 ```
 fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HM6P06FJH1PF", Request id "0HM6P06FJH1PF:00000002": An unhandled exception was thrown by the application.
+      System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext
       ...
 ```
       
