@@ -19,8 +19,18 @@ Libraries used:
 
 ## Running the project
 
-In the project directory, you can run:
+### Via Docker
 
-### `npm start`
+I've published a public docker container that can be used to run this side of the app:
 
+`docker run -it -p 3000:3000 ericrivera228/planet-store-frontend:latest`
+
+### Locally
+
+If you wish, you can also download, build, and run the code locally. After downloading this repo folder:
+
+`npm install`
+Installs the library dependencies. 
+
+`npm start`
 Runs the app in the development mode.
