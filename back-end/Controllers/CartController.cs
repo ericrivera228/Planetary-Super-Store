@@ -37,7 +37,7 @@ namespace PlanetarySuperStoreApi.Controllers
 
                 // defenseive code - the product should usually be found
                 if(product != null){
-                    totalCost += product.Price * x.quantity;
+                    totalCost += product.Price * (x.quantity != null ? x.quantity.Value: 0) ;
                 }
 
             });
@@ -86,15 +86,15 @@ namespace PlanetarySuperStoreApi.Controllers
         /// <param name="cartItemId">Id of the cartItem whose quantity is to be updated. Returns a NotFound response if this 
         ///     does not represent a valid cartItem.</param>
         /// <param name="quantity">New number of product units in the cart. Returns a BadRequest response if this 
-        ///     value is less than 1.</param>
+        ///     value is less than 0.</param>
         /// <returns>NoContent result.</returns>
         [HttpPut("{cartItemId:long}/{quantity:int}")]
         public async Task<IActionResult> ChangeItemQuantity(long cartItemId, int quantity)
         {
 
-            // Doesn't make sense to set quantity to something less than 1 (if an item is being remove from the 
-            // cart altogether, use the delete method); return an error repsonse
-            if(quantity < 1){
+            // Doesn't make sense to set quantity to something less than 0 (if an item is being remove from the 
+            // cart altogether, use the delete method; -1 represents a magic value); return an error repsonse
+            if(quantity < -1){
                 return BadRequest("Quantity cannot be less than 0.");
             }
 
@@ -106,8 +106,8 @@ namespace PlanetarySuperStoreApi.Controllers
                 return NotFound($"Could not find cart item with id {cartItemId}.");
             }
 
-            // Update the quantity and save the changes
-            cartItem.quantity = quantity;
+            // -1 is a magic value used to facilitate passing a null value via a uri
+            cartItem.quantity = quantity == -1 ? null : quantity;
             await _context.SaveChangesAsync();
 
             // Return successful result
