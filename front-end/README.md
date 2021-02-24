@@ -13,7 +13,7 @@ There are three pages in this app:
 This UI is implemented with React and some other third party libraries. These libraries were all used to facilitate a quick and easy development process, that would still look and function reasonably well. 
 
 Libraries used:
-1. [React](https://reactjs.org/) - imo, a great framework for creating small web apps.
+1. [React](https://reactjs.org/) - a great framework for creating small web apps.
 2. [MaterialUI](https://material-ui.com/) - gives access to fleshed out UI components, without having to create them from scratch. 
 3. [Bootstrap](https://getbootstrap.com/) - used to easily ensure the app is responsive, and will work at mobile sizes.
 
