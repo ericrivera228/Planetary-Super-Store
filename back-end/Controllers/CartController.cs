@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PlanetarySuperStoreApi.Models;
 
 namespace PlanetarySuperStoreApi.Controllers
@@ -24,16 +25,17 @@ namespace PlanetarySuperStoreApi.Controllers
         /// </summary>
         /// <returns>Cart information as Cart object.</returns>
         [HttpGet]
-        public Cart GetCartSummary()
+        public async Task<Cart> GetCartSummary()
         {
             var totalCost = 0m;
-            var cartItems = _context.CartItems.ToList();
+            var cartItems = await _context.CartItems.ToListAsync();
+            var products = await _context.Products.ToListAsync();
             
             // Calculate the price of each item in the cart (number of units selected * price)
             cartItems.ForEach(x =>{
                 
                 // Get the product object
-                Product product = _context.Products.FirstOrDefault(y => y.Id == x.productId);
+                Product product = products.FirstOrDefault(y => y.Id == x.productId);
 
                 // defenseive code - the product should usually be found
                 if(product != null){
