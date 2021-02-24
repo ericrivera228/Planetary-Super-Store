@@ -16,6 +16,7 @@ import { ThemeProvider } from "@material-ui/styles";
 // Local imports
 import { AppApi } from "appApi";
 import PlanetStoreAppBar from "components/PlanetStoreAppBar";
+import { Cart } from "domain/cart";
 import { Product } from "domain/product";
 import { Routes } from "domain/routes";
 import CartPage from "pages/CartPage";
@@ -27,9 +28,9 @@ import "./PlanetStore.css";
 // Default page for the app to display when it starts up
 const DEFAULT_PAGE = Routes.Cart;
 
-const GET_PRODUCTS_ERROR =
-  "Oh no! There was an error grabbing the available products. Unfortunately this means the app won't work. " +
-  "Check the console for details, or just try again later and hopefully everything will just work out, ya know?";
+const FATAL_ERROR =
+  "Oh no! There was a fatal error. Unfortunately this means the app won't work. Check the console for details, " +
+  "or just try again later and hopefully everything will just work out, ya know?";
 
 const theme = createMuiTheme({
   palette: {
@@ -43,10 +44,11 @@ const theme = createMuiTheme({
 });
 
 function PlanetStore() {
-  // Product state variable lives here at the app level both the product and cart pages have access to it
+  // Product & cart summary state variables live here at the app level so both the product and cart pages have access to it
   const [products, setProducts] = useState([] as Product[]);
+  const [cart, setCart] = useState<Cart | null>(null);
 
-  // Indicates if there was an error retrieving the list of available products. If there was, an error
+  // Indicates if there was a error with one of the vital api calls. If there was, an error
   // will be displayed, and the app will be unusable
   const [error, setError] = useState("");
 
@@ -57,11 +59,32 @@ function PlanetStore() {
         setProducts(result);
       },
       (error) => {
-        setError(GET_PRODUCTS_ERROR);
+        setError(FATAL_ERROR);
+        console.log(error);
+      }
+    );
+    AppApi.getCartSummary().then(
+      (result: Cart) => {
+        setCart(result);
+      },
+      (error) => {
+        setError(FATAL_ERROR);
         console.log(error);
       }
     );
   }, []);
+
+  const onCartChange = () => {
+    AppApi.getCartSummary().then(
+      (result: Cart) => {
+        setCart(result);
+      },
+      (error) => {
+        setError(FATAL_ERROR);
+        console.log(error);
+      }
+    );
+  };
 
   return (
     <Router>
@@ -88,13 +111,21 @@ function PlanetStore() {
                   <Redirect to={DEFAULT_PAGE} />
                 </Route>
                 <Route path={Routes.Cart}>
-                  <CartPage products={products} />
+                  <CartPage
+                    products={products}
+                    cart={cart}
+                    handleCartChange={onCartChange}
+                  />
                 </Route>
                 <Route path={Routes.SignIn}>
                   <SignInPage />
                 </Route>
                 <Route path={Routes.Product}>
-                  <ProductPage products={products} />
+                  <ProductPage
+                    products={products}
+                    cart={cart}
+                    handleCartChange={onCartChange}
+                  />
                 </Route>
               </Switch>
             )}

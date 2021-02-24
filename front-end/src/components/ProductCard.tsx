@@ -24,6 +24,9 @@ interface iProductCardProps {
   // Product to be displayed in this card
   product: Product;
 
+  // Indicates if the product being displayed by this card is already in the cart
+  inCart: boolean;
+
   // Callback for when the 'add' button is clicked
   handleAddClick: (productId: string) => void;
 
@@ -68,10 +71,11 @@ function ProductCard(props: iProductCardProps) {
           variant="contained"
           color="secondary"
           disableElevation={true}
+          disabled={props.inCart}
           onClick={() => props.handleAddClick(props.product.id)}
           startIcon={<AddShoppingCartIcon />}
         >
-          Add to Cart
+          {props.inCart ? "In Cart" : "Add to Cart"}
         </Button>
       </CardActions>
     </Card>
