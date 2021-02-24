@@ -14,7 +14,7 @@ Whenver the project starts up, it loads a hard-coded list of planets for sale, w
 
 Structure of the server:
 1. `/modals` - Home for classes that represent data models. (Except for `AppDbContext`, this class is uninteresting and can be ignored). 
-2. `/controllers` - Home for classes exposing the endpoints of the API server. `ProductController` is used to provide a lot 
+2. `/controllers` - Home for classes exposing the endpoints of the API server. `ProductController` is used to provide the list of available planets for sale. `CartController` is used to provide all means of cart maniuplation (adding, updating, removing). 
 3. `MockData.cs` - Class that stores the hard-coded list of planets available for sale.
 
 ## Running the project
